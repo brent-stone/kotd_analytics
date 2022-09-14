@@ -5,8 +5,10 @@ from typing import Optional
 from logging import getLogger
 
 from sqlalchemy.engine import Engine
+from sqlalchemy.orm import sessionmaker
 
 from kotd_analytics.db import get_engine
+from kotd_analytics.db import Comments
 
 logger = getLogger(__name__)
 
@@ -21,4 +23,12 @@ def start(a_db_path: str) -> None:
     if not l_engine:
         logger.error("[start] Failed to create sqlite engine.")
         exit(-1)
-    print("good to go!")
+
+    l_session = sessionmaker(bind=l_engine)
+
+    with l_session.begin() as session:
+        results = session.query(Comments).filter_by(author_flair_css_class="Elf").all()
+    for line in results:
+        print(line)
+
+

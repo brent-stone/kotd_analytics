@@ -66,7 +66,7 @@ def get_engine(a_sqlite_path: str) -> Optional[Engine]:
         a_sqlite_path = a_sqlite_path[1:]
     l_dsn_str: str = sqlite_prefix + a_sqlite_path
     try:
-        l_engine: Engine = create_engine(l_dsn_str)
+        l_engine: Engine = create_engine(l_dsn_str, echo=True)
         logger.debug(f"[get_engine] Successfully created SQLAlchemy engine from DSN: {l_dsn_str}")
     except (ArgumentError, ValueError) as e:
         logger.error(f"[get_engine] Failed to create the engine from DSN: {l_dsn_str}")
