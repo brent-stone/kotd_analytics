@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "kotd_analytics"
+version = "0.1.0"
+description = "Statistical Machine Learning and Empirical Data Modeling analysis of Kick Open The Door (KOTD) data."
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.12"
+pandas = "^1.4.4"
+pyEDM = "^1.13.1"
+scipy = "^1.9.1"
+SQLAlchemy = "^1.4.41"
+
+[tool.poetry.dev-dependencies]
+black = "^22.8.0"
+pytest = "^7.1.3"
+Sphinx = "^5.1.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
