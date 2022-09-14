@@ -27,8 +27,10 @@ def start(a_db_path: str) -> None:
     l_session = sessionmaker(bind=l_engine)
 
     with l_session.begin() as session:
-        results = session.query(Comments).filter_by(author_flair_css_class="Elf").all()
-    for line in results:
-        print(line)
+        results = session.query(Comments).all()
+        for i, line in enumerate(results):  # type: Comments
+            print(line.__dict__)
+            if i > 15:
+                break
 
 

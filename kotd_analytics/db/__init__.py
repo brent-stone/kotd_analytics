@@ -61,9 +61,6 @@ def get_engine(a_sqlite_path: str) -> Optional[Engine]:
     :param a_sqlite_path:
     :return:
     """
-    # Strip any lefthand '/' from the path prior to concatenation
-    if a_sqlite_path[0] == "/":
-        a_sqlite_path = a_sqlite_path[1:]
     l_dsn_str: str = sqlite_prefix + a_sqlite_path
     try:
         l_engine: Engine = create_engine(l_dsn_str, echo=True)
